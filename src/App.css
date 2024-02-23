@@ -1,0 +1,424 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  background-color: #eefaff;
+}
+.nav {
+  /* background-color: grey; */
+  width: 100%;
+  height: 48px;
+}
+.kalvium-books {
+  margin: 0px;
+  font-size: x-large;
+  padding-left: 30px;
+  padding-top: 10px;
+  letter-spacing: 5px;
+  color: #1d80c6;
+  margin-top: 10px;
+}
+.nav-1 {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 40px;
+  margin-top: 10px;
+}
+.brand {
+  display: flex;
+  justify-content: space-between;
+}
+/* -----------------MAIN CONTENT---------------------- */
+/* Container */
+/* Container */
+.container {
+  max-width: 1200px; /* Adjust maximum width as needed */
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-top: 30px;
+}
+
+/* Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px; /* Adjust margin to compensate for padding */
+}
+
+/* Column */
+.col-md-3 {
+  flex: 0 0 25%; /* Each column occupies 25% of the row's width */
+  max-width: 23%;
+  padding: 0 10px; /* Adjust padding as needed */
+}
+
+/* Book box */
+.book-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px; /* Adjust spacing between books */
+}
+
+/* Image */
+.book-box img {
+  width: 100%;
+  max-width: 200px;
+  height: 325px;
+  border: 3px solid #1d80c6;
+}
+
+/* Title */
+.book-box h5 {
+  margin: 10px 0;
+}
+
+/* Price */
+.book-box .price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-box .price p {
+  margin: 0 5px;
+}
+.no-results {
+  text-align: center;
+  font-weight: 200;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 4px;
+}
+.price {
+  color: grey;
+  font-family: sans-serif;
+}
+.book-box {
+  font-family: sans-serif;
+}
+p {
+  color: grey;
+  margin: 0px;
+  font-size: small;
+  margin-top: 5px;
+}
+.authors-name {
+  margin: 0px;
+  color: #353639;
+  font-size: 12px;
+}
+.checkbox-box {
+  color: white;
+  padding-top: 18px;
+  font-family: sans-serif;
+}
+.error {
+  color: white;
+  font-family: sans-serif;
+}
+
+
+
+
+@media only screen and (max-width: 800px) {
+  .col-md-3 {
+    flex: 0 0 33.33%; /* For desktops, each column occupies 33.33% of the row's width */
+    max-width: 33.33%;
+    align-items: center;
+  }
+  .kalvium-books {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  .container {
+    margin-left: 20%;
+  }
+  .register-btn {
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 15px;
+    width: 20%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .col-md-3 {
+    flex: 0 0 50.33%; /* For desktops, each column occupies 33.33% of the row's width */
+    max-width: 50%;
+    align-items: center;
+    margin-left: 13%;
+  }
+   a {
+    margin-left: 10px;
+  }
+  .kalvium-books {
+    font-size: 16px;
+    letter-spacing: 0px;
+    width: 100%;
+  }
+  div.group {
+    margin-left: 10px;
+    width: 150px;
+  }
+  button.register-btn {
+    padding: 5%;
+    font-size: small;
+    margin-top: 1px;
+    height: 30px;
+    letter-spacing: 0px;
+  }
+}
+@media only screen and (max-width: 370px) {
+  .col-md-3 {
+    flex: 0 0 50.33%; /* For desktops, each column occupies 33.33% of the row's width */
+    max-width: 50%;
+    align-items: center;
+    margin-left: 13%;
+  }
+   a {
+    margin-left: 10px;
+  }
+  h3.kalvium-books {
+    font-size: 16px;
+    letter-spacing: 0px;
+    width: 100px;
+    padding: 0px;
+  }
+  div.nav-1 {
+    width: 280px;
+    
+  }
+  div.group {
+    margin-left: 10px;
+    width: 150px;
+    height: 30px;
+  }
+  button.register-btn {
+    padding: 5%;
+    font-size: small;
+    margin-top: -1px;
+    height: 30px;
+    letter-spacing: 0px;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .col-md-3 {
+    flex: 0 0 75.33%; /* For desktops, each column occupies 33.33% of the row's width */
+    max-width: 75%;
+    align-items: center;
+    margin-left: 1%;
+    .register-btn {
+      display: none;
+    }
+  }
+}
+/* styles----------------------------------------------------------- */
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  width: 70%;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid rgb(206, 206, 206);
+  border-radius: 8px;
+  outline: none;
+  background-color: white;
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+.input[type="search"] {
+  text-align: center;
+}
+.input::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus,
+input:hover {
+  outline: none;
+  color: rgb(66, 66, 66);
+  border-color: #1d80c6;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 0 4px #094d7e47;
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+.register-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #1d80c6;
+  transition: all 1000ms;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #1d80c6;
+  width: 95%;
+  background-color: WHITE;
+}
+
+.register-btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #1d80c6;
+  box-shadow: 4px 5px 17px -4px #1d80c6;
+}
+
+.register-btn::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #1d80c6;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.register-btn:hover::before {
+  width: 250%;
+}
+
+/* code for register */
+.major {
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+}
+
+.form {
+  margin-top: 10%;
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 20px;
+  width: 130%;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.second-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.second {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.cut-short {
+  width: 50px;
+}
+
+.iLabel {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.second:focus ~ .cut {
+  transform: translateY(8px);
+}
+
+.second:focus ~ .iLabel {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.second:not(:focus) ~ .iLabel {
+  color: #808097;
+}
+
+.second:focus ~ .iLabel {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+}
