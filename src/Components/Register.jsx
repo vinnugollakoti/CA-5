@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Register = () => {
   const [firstNameError, setFirstNameError] = useState(false);
@@ -6,8 +6,6 @@ const Register = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [repeatPasswordError, setRepeatPasswordError] = useState(false);
-  const [validSuccess, setValidSuccess] = useState(false);
-  const [spaceError, setSpaceError] = useState(false);
   const [termsError, setTermsError] = useState(false); // New state variable for terms checkbox
   const [termsAccepted, setTermsAccepted] = useState(false); // New state variable to track checkbox state
   const [data, setData] = useState({
@@ -21,6 +19,27 @@ const Register = () => {
   const handleSetState = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
+
+    // Clear error when user corrects input
+    switch (name) {
+      case "firstName":
+        setFirstNameError(false);
+        break;
+      case "lastName":
+        setLastNameError(false);
+        break;
+      case "email":
+        setEmailError(false);
+        break;
+      case "password":
+        setPasswordError(false);
+        break;
+      case "repeatPassword":
+        setRepeatPasswordError(false);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleCheckboxChange = () => {
@@ -35,39 +54,32 @@ const Register = () => {
 
     const { firstName, lastName, email, password, repeatPassword } = data;
 
-    // Check for empty fields or spaces
-    if (
-      firstName.trim() === "" ||
-      lastName.trim() === "" ||
-      email.trim() === "" ||
-      password.trim() === "" ||
-      repeatPassword.trim() === "" ||
-      email.includes(" ")
-    ) {
-      errors.push("Please fill in all fields and make sure there are no spaces.");
-    }
-
     // Check name length constraints
     if (firstName.length < 3 || firstName.length > 30) {
+      setFirstNameError(true);
       errors.push("First name should be between 3 and 30 characters long.");
     }
 
     if (lastName.length < 3 || lastName.length > 30) {
+      setLastNameError(true);
       errors.push("Last name should be between 3 and 30 characters long.");
     }
 
     // Check for valid email format
     if (!email.includes("@")) {
+      setEmailError(true);
       errors.push("Enter a valid email address.");
     }
 
     // Check password length and special character constraints
     if (password.length < 10 || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      setPasswordError(true);
       errors.push("Password should be at least 10 characters long and contain at least one special character.");
     }
 
     // Check if repeat password matches password
     if (password !== repeatPassword) {
+      setRepeatPasswordError(true);
       errors.push("Passwords do not match.");
     }
 
@@ -77,18 +89,20 @@ const Register = () => {
       errors.push("Please accept the terms and services.");
     }
 
-    // Update error states
-    setFirstNameError(firstName.length < 3 || firstName.length > 30);
-    setLastNameError(lastName.length < 3 || lastName.length > 30);
-    setEmailError(!email.includes("@"));
-    setPasswordError(password.length < 10 || !/[!@#$%^&*(),.?":{}|<>]/.test(password));
-    setRepeatPasswordError(password !== repeatPassword);
-    setSpaceError(errors.length > 0);
-
-    // If there are no errors, set validSuccess to true
+    // If there are no errors, log the data object and reset form
     if (errors.length === 0) {
-      setValidSuccess(true);
+      console.log(data); // Print data object to the console
       alert("Congratulations! You have registered successfully.");
+
+      // Reset form and state
+      setData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        repeatPassword: "",
+      });
+      setTermsAccepted(false);
     }
   };
 
@@ -109,9 +123,8 @@ const Register = () => {
               value={data.firstName}
               onChange={handleSetState}
             />
+            {firstNameError && <p className="error">First name should be between 3 and 30 characters long.</p>}
           </div>
-          {firstNameError && <p className="error">First name should be between 3 and 30 characters long.</p>}
-          {spaceError && !data.firstName.trim() && <p className="error">Please enter your first name.</p>}
 
           <div className="second-container ic2">
             <input
@@ -123,9 +136,8 @@ const Register = () => {
               value={data.lastName}
               onChange={handleSetState}
             />
+            {lastNameError && <p className="error">Last name should be between 3 and 30 characters long.</p>}
           </div>
-          {lastNameError && <p className="error">Last name should be between 3 and 30 characters long.</p>}
-          {spaceError && !data.lastName.trim() && <p className="error">Please enter your last name.</p>}
 
           <div className="second-container ic2">
             <input
@@ -137,9 +149,8 @@ const Register = () => {
               value={data.email}
               onChange={handleSetState}
             />
+            {emailError && <p className="error">Enter a valid email address.</p>}
           </div>
-          {emailError && <p className="error">Enter a valid email address.</p>}
-          {spaceError && !data.email.trim() && <p className="error">Please enter your email address.</p>}
 
           <div className="second-container ic2">
             <input
@@ -151,13 +162,8 @@ const Register = () => {
               value={data.password}
               onChange={handleSetState}
             />
+            {passwordError && <p className="error">Password should be at least 10 characters long and contain at least one special character.</p>}
           </div>
-          {passwordError && (
-            <p className="error">
-              Password should be at least 10 characters long and contain at least one special character.
-            </p>
-          )}
-          {spaceError && !data.password.trim() && <p className="error">Please enter your password.</p>}
 
           <div className="second-container ic2">
             <input
@@ -169,9 +175,8 @@ const Register = () => {
               value={data.repeatPassword}
               onChange={handleSetState}
             />
+            {repeatPasswordError && <p className="error">Passwords do not match.</p>}
           </div>
-          {repeatPasswordError && <p className="error">Passwords do not match.</p>}
-          {spaceError && !data.repeatPassword.trim() && <p className="error">Please confirm your password.</p>}
 
           <div className="checkbox-box">
             <input
@@ -185,8 +190,8 @@ const Register = () => {
             <label htmlFor="terms">
               I agree all statements in <a>Terms of service</a>
             </label>
+            {termsError && <p className="error">Please accept the terms and services.</p>}
           </div>
-          {termsError && <p className="error">Please accept the terms and services.</p>}
 
           <button
             className="submit"
@@ -197,7 +202,6 @@ const Register = () => {
               emailError ||
               passwordError ||
               repeatPasswordError ||
-              spaceError ||
               !termsAccepted
             }
           >
